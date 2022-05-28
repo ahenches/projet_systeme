@@ -11,6 +11,9 @@
 #include <fcntl.h>
 #include <string.h>
 
+#define TRUE 1
+#define FALSE 0
+
 void synchro_list(char *dossier1, char *dossier2)
 {
     int tube1[2] ={-1,-1}, tube2[2]= {-1,-1};
@@ -33,11 +36,11 @@ void synchro_list(char *dossier1, char *dossier2)
         char name_file [260];
         char time_file [32];
         char reponse;
+        int fichierAcopier = FALSE;
         DIR *d2 = opendir(dossier2); 
 
         if (d2 != NULL)
         {
-            
             do
             {
                read(tube1[0], &name_file,sizeof(char)*260); //on recupere le nom du fichier du dossier1 courant
@@ -61,6 +64,12 @@ void synchro_list(char *dossier1, char *dossier2)
                                 write(tube2[1], &reponse,sizeof(char)); // on repond que l'on a le meme nom
 
                                 read(tube1[0],&time_file, sizeof(char)*32); //on recupere la date du fichier courant du dossier1
+
+                                if(strcmp(time_file,s)!=0)
+                                {
+                                    fichierAcopier = TRUE;
+                                }
+
             
                             }
                             else //les noms ne correspondent pas A CHANGER DE PLACE !!!!
