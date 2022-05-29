@@ -12,6 +12,50 @@
 #include <string.h>
 #include "./synchro_list.h"
 
+
+void actualise_liste(char *dossier)
+{
+    FILE* fichier = NULL;
+    fichier = fopen("./synchro_list/liste.txt", "w");
+
+    if (fichier!= NULL )
+    {
+        DIR *d = opendir(dossier);
+        if (d != NULL)
+        {
+            struct dirent *dir;
+            while ((dir = readdir(d)))
+            {
+                struct stat st;
+                stat (dir ->d_name,&st);
+                {
+                    time_t t = st.st_mtime;        
+                    struct tm tm =*localtime(&t);
+                    char s[32];
+                    strftime(s,sizeof s, "%d/%m/%Y %H:%M:%S",&tm);
+                    if (dir->d_type == DT_REG)
+                    {
+                        char name [1000];
+                        strcpy(name , dir->d_name);
+                        strcat(name,"-");
+                        strcat(name,s);
+                        strcat(name,"\n");
+                        fputs(name,fichier);
+                    }
+                }
+            }
+        }
+        closedir(d);
+    }
+    fclose(fichier);
+}
+
+void synchro_list(char *dossier1)
+{   
+    actualise_liste(dossier1);
+}
+
+/*
 void ajoute_dans_liste(char *dossier)
 {
     char ligne [500];
@@ -77,47 +121,4 @@ void ajoute_dans_liste(char *dossier)
     }
     closedir(d);
 }
-
-
-void actualise_liste(char *dossier)
-{
-    FILE* fichier = NULL;
-    fichier = fopen("../synchro_list/liste.txt", "w");
-
-    if (fichier!= NULL )
-    {
-        DIR *d = opendir(dossier);
-        if (d != NULL)
-        {
-            struct dirent *dir;
-            while ((dir = readdir(d)))
-            {
-                struct stat st;
-                stat (dir ->d_name,&st);
-                {
-                    time_t t = st.st_mtime;        
-                    struct tm tm =*localtime(&t);
-                    char s[32];
-                    strftime(s,sizeof s, "%d/%m/%Y %H:%M:%S",&tm);
-                    if (dir->d_type == DT_REG)
-                    {
-                        char name [1000];
-                        strcpy(name , dir->d_name);
-                        strcat(name,"-");
-                        strcat(name,s);
-                        strcat(name,"\n");
-                        fputs(name,fichier);
-                    }
-                }
-            }
-        }
-        closedir(d);
-    }
-    fclose(fichier);
-}
-
-void synchro_list(char *dossier1, char *dossier2)
-{   
-    actualise_liste(dossier1);
-    ajoute_dans_liste(dossier2);
-}
+*/

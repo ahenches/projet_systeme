@@ -48,7 +48,7 @@ void copie_fichier(char *fichier1, char *fichier2)
     free(contenu);
 }
 
-void compare_listes()
+void compare_listes(char *dossier_source, char *dossier_dest)
 {
     char ligne [500];
     char ligne2 [500];
@@ -60,7 +60,7 @@ void compare_listes()
     int fichierModifie = FALSE;
     FILE* liste = NULL;
 
-    liste = fopen("../synchro_list/liste.txt", "r");
+    liste = fopen("./synchro_list/liste.txt", "r");
     if (liste!= NULL )
     {
         while(fgets(ligne,sizeof(char)*500, liste))
@@ -75,7 +75,7 @@ void compare_listes()
                 resultatDecoupe=strtok(NULL,"-");
             }
             FILE* ancienne_liste = NULL;
-            ancienne_liste = fopen("./ancienne_liste.txt","r");
+            ancienne_liste = fopen("./copy_list/ancienne_liste.txt","r");
             while(fgets(ligne2,sizeof(char)*500, ancienne_liste))
             {               
                 char *resultatDecoupe2 = strtok(ligne2, "-");
@@ -101,11 +101,11 @@ void compare_listes()
             {
                 char fichier_a_copier [1000];
                 char fichier_copie [1000];
-                strcpy(fichier_a_copier, SERVEUR1);
+                strcpy(fichier_a_copier, dossier_source);
                 strcat(fichier_a_copier,"/");
                 strcat(fichier_a_copier, name_file);
 
-                strcpy(fichier_copie, SERVEUR3);
+                strcpy(fichier_copie, dossier_dest);
                 strcat(fichier_copie,"/");
                 strcat(fichier_copie, name_file);
                 copie_fichier(fichier_a_copier,fichier_copie);
@@ -121,10 +121,17 @@ void compare_listes()
 }
 
 
-void copy_list()
+void copy_list(char *dossier_source, char *dossier_dest)
 {
-    copie_fichier("../synchro_list/liste.txt","./ancienne_liste.txt");
-    synchro_list(SERVEUR1,SERVEUR2);
-    compare_listes();
+    copie_fichier("./synchro_list/liste.txt","./copy_list/ancienne_liste.txt");
+    synchro_list(dossier_source);
+    compare_listes(dossier_source,dossier_dest);
+}
+
+int main ()
+{
+    //synchro_list(SERVEUR1);
+    copy_list(SERVEUR1, SERVEUR2);
+    return 0;
 }
 
