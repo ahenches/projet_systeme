@@ -11,13 +11,10 @@
 #include <fcntl.h>
 #include <string.h>
 #include "../synchro_list/synchro_list.h"
+#include "./copy_list.h"
 
-#define SERVEUR1 "../dossier_serveur1"
-#define SERVEUR2 "../dossier_serveur2"
-#define SERVEUR3 "../dossier_serveur3"
-#define TAILLE_TAMPON 1024
-
-void copie_fichier(char *fichier1, char *fichier2){
+void copie_fichier(char *fichier1, char *fichier2)
+{
 
     FILE* liste = NULL;
     FILE* copieListe = NULL;
@@ -131,9 +128,3 @@ void copy_list()
     compare_listes();
 }
 
-
-int main()
-{
-    copy_list();
-    return 0;
-}
