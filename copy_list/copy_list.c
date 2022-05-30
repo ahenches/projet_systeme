@@ -74,6 +74,7 @@ void compare_listes(char *dossier_source, char *dossier_dest)
                     strcpy(time_file,resultatDecoupe);
                 resultatDecoupe=strtok(NULL,"-");
             }
+            printf("Vérification pour le fichier : %s\n", name_file);
             FILE* ancienne_liste = NULL;
             ancienne_liste = fopen("./copy_list/ancienne_liste.txt","r");
             while(fgets(ligne2,sizeof(char)*500, ancienne_liste))
@@ -90,15 +91,18 @@ void compare_listes(char *dossier_source, char *dossier_dest)
                 if (strcmp(nom,name_file )==0) 
                 {
                     fichierAjoute = FALSE;
-                    
+                    printf("\tLe fichier existe déja\n");
                     if(strcmp(time_file,date_fic)!=0)
                     {
+                        printf("\tLe fichier a été modifié\n");
                         fichierModifie = TRUE;
                     }
                 }
             }
             if(fichierAjoute == TRUE || fichierModifie == TRUE)
             {
+                printf("\n\tLe fichier %s a été modifié ou n'existait pas dans la sauvegarde\n", name_file);
+                printf("\tCopie du fichier dans la sauvegarde\n");
                 char fichier_a_copier [1000];
                 char fichier_copie [1000];
                 strcpy(fichier_a_copier, dossier_source);
