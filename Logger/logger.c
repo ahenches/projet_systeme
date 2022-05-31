@@ -70,7 +70,7 @@ void logSomething(char * message){
     char path[255];
 
     struct tm tm = *localtime(&t);
-    sprintf(path,"C:\\Users\\wissa\\CLionProjects\\myLogger\\log_%d-%02d-%02d_%02d.txt", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour);
+    sprintf(path,"../log_%d-%02d-%02d_%02d.txt", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour);
 
     //Debut
     fichier = fopen(path, "a");//Ouverture du fichier
