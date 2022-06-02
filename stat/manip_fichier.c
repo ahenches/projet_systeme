@@ -1,4 +1,4 @@
-#include "manip_stat.h"
+#include "manip_fichier.h"
 
 FILE* ouvrir_fichier(char* path, char* mode){
     int num;
