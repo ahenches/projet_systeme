@@ -11,6 +11,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include "../synchro_list/synchro_list.h"
+#include "../Logger/logger.h"
 #include "./copy_list.h"
 
 void copie_fichier(char *fichier1, char *fichier2)
@@ -36,13 +37,14 @@ void copie_fichier(char *fichier1, char *fichier2)
 		}
 	}
 	fclose(liste);
-
+    logSomething("Tentative de copie du fichier contenant la liste des fichiers du serveur");
 	copieListe = fopen(fichier2, "w");
 
 	if(copieListe != NULL && contenu!=NULL)
 	{
 		fputs(contenu, copieListe);
 	}
+    logSomething("Tentative réussie");
 
     fclose(copieListe);
     free(contenu);
@@ -101,6 +103,7 @@ void compare_listes(char *dossier_source, char *dossier_dest)
             }
             if(fichierAjoute == TRUE || fichierModifie == TRUE)
             {
+                logSomething("Tenatvie de copie de fichier modifié ou créé");
                 printf("\n\tLe fichier %s a été modifié ou n'existait pas dans la sauvegarde\n", name_file);
                 printf("\tCopie du fichier dans la sauvegarde\n");
                 char fichier_a_copier [1000];
@@ -113,6 +116,7 @@ void compare_listes(char *dossier_source, char *dossier_dest)
                 strcat(fichier_copie,"/");
                 strcat(fichier_copie, name_file);
                 copie_fichier(fichier_a_copier,fichier_copie);
+                logSomething("Tentative réussie");
             }
             fichierAjoute = TRUE;
             fichierModifie = FALSE;
@@ -130,12 +134,5 @@ void copy_list(char *dossier_source, char *dossier_dest)
     copie_fichier("./synchro_list/liste.txt","./copy_list/ancienne_liste.txt");
     synchro_list(dossier_source);
     compare_listes(dossier_source,dossier_dest);
-}
-
-int main ()
-{
-    //synchro_list(SERVEUR1);
-    copy_list(SERVEUR1, SERVEUR2);
-    return 0;
 }
 

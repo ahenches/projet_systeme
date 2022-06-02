@@ -10,11 +10,12 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <string.h>
+#include "../Logger/logger.h"
 #include "./synchro_list.h"
-
 
 void actualise_liste(char *dossier)
 {
+    logSomething("Tentative d'actualisation de la liste contenant les fichier du serveur");
     FILE* fichier = NULL;
     fichier = fopen("./synchro_list/liste.txt", "w");
 
@@ -48,6 +49,7 @@ void actualise_liste(char *dossier)
         closedir(d);
     }
     fclose(fichier);
+    logSomething("Tentative réussi");
 }
 
 void synchro_list(char *dossier1)
