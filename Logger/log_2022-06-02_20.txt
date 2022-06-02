@@ -1,0 +1,6 @@
+-------- 02/06/2022  20 h 11 min 57 sec --------
+Récolte données statistiques sur données synchronisation liste
+------------------------------------------------
+-------- 02/06/2022  20 h 11 min 57 sec --------
+Stocker dans un fichier résultat de la collecte d'information
+------------------------------------------------

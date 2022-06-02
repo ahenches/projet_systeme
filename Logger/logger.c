@@ -14,7 +14,7 @@ void writeTextFromBuffer ( FILE * file, char* message) // message: c'est le text
 
     // allocate tmpBuffer
     tmpBuffer = (char *) malloc ( REGULARPACKAGE_SIZE ); // on alloue la mémoire avec la taille maximum
-    printf("%d lenght\n", length);
+    printf("%d length\n", length);
     fprintf(file, "-------- %02d/%02d/%d  %02d h %02d min %02d sec --------\n",  tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900, tm.tm_hour, tm.tm_min, tm.tm_sec);
     while ( bytesWritten < length )
     {

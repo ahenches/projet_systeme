@@ -15,16 +15,16 @@
 
 
 
-int main(){
+int stat(){
     logSomething("Récolte données statistiques sur données synchronisation liste");
-    int resultat_comparaison = compareDeuxFichiers("../copy_list/ancienne_liste.txt", "../synchro_list/liste.txt");
+    int resultat_comparaison = compareDeuxFichiers("./copy_list/ancienne_liste.txt", "./synchro_list/liste.txt");
 
 
 
     
 
-    int nLigneF1 = nombreLignes("../copy_list/ancienne_liste.txt");
-    int nLigneF2 = nombreLignes("../synchro_list/liste.txt");
+    int nLigneF1 = nombreLignes("./copy_list/ancienne_liste.txt");
+    int nLigneF2 = nombreLignes("./synchro_list/liste.txt");
 
     
     logSomething("Stocker dans un fichier résultat de la collecte d'information");
@@ -35,12 +35,6 @@ int main(){
     appendStrFichier("comparaison_dossier.txt", "différence");
     appendValueFichier("comparaison_dossier.txt", resultat_comparaison);
     appendTermlineFichier("comparaison_dossier.txt");
-
-
-
-
-
-
 
     return 0;
 }
