@@ -5,7 +5,7 @@
 
 
 
-int stat(){
+int statistique(){
     logSomething("Récolte données statistiques sur données synchronisation liste");
     int resultat_comparaison = compareDeuxFichiers("./copy_list/ancienne_liste.txt", "./synchro_list/liste.txt");
 

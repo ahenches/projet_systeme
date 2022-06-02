@@ -4,3 +4,18 @@ Récolte données statistiques sur données synchronisation liste
 -------- 02/06/2022  20 h 11 min 57 sec --------
 Stocker dans un fichier résultat de la collecte d'information
 ------------------------------------------------
+-------- 02/06/2022  20 h 55 min 46 sec --------
+Récolte données statistiques sur données synchronisation liste
+------------------------------------------------
+-------- 02/06/2022  20 h 55 min 46 sec --------
+Stocker dans un fichier résultat de la collecte d'information
+------------------------------------------------
+-------- 02/06/2022  20 h 55 min 46 sec --------
+Tentative de copie du fichier contenant la liste des fichiers du serveur
+------------------------------------------------
+-------- 02/06/2022  20 h 55 min 46 sec --------
+Tentative réussie
+------------------------------------------------
+-------- 02/06/2022  20 h 55 min 46 sec --------
+Tentative d'actualisation de la liste contenant les fichier du serveur
+------------------------------------------------

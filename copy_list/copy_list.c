@@ -124,13 +124,12 @@ void compare_listes(char *dossier_source, char *dossier_dest)
         }
     }
     fclose(liste);
-
-
 }
 
 
 void copy_list(char *dossier_source, char *dossier_dest)
 {
+
     copie_fichier("./synchro_list/liste.txt","./copy_list/ancienne_liste.txt");
     synchro_list(dossier_source);
     compare_listes(dossier_source,dossier_dest);

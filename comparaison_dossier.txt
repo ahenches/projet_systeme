@@ -1,0 +1,1 @@
+ancienne_liste.txt	3	liste.txt	5	différence	2	1654196146

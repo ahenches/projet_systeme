@@ -11,4 +11,4 @@
 #include <fcntl.h>
 #include <string.h>
 
-int stat();
+int statistique();
