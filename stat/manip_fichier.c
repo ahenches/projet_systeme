@@ -1,7 +1,6 @@
 #include "manip_fichier.h"
 
 FILE* ouvrir_fichier(char* path, char* mode){
-    int num;
     FILE *fptr;
 
     // use appropriate location if you are using MacOS or Linux
