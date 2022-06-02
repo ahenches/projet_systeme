@@ -1,0 +1,1 @@
+gcc -Wall main.c ./copy_list/copy_list.c ./synchro_list/synchro_list.c ./Logger/logger.c ./stat/stat.c ./stat/manip_fichier.c -o main
